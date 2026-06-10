@@ -1,16 +1,17 @@
 # Largada BR - Requisitos
 
 # Inputs
-- botão orça fechada (1/2/reset)
-- botão boia largada (1/2/reset)
-- botão largada (5min/1min/reset)
-- botão comparar desempenho (1/2)
+- botão ORÇA fechada (1/2/reset)
+- botão BOIA largada (1/2/reset)
+- botão CONTAGEM para largada (5min/1min/fim)
+- botão COMPARAR desempenho (1/2)
 - velocidade do GPS
 - lat/long do GPS
 
 # Outputs
 - audio (autofalante bluetooth)
 - log em arquivo texto
+  
 Nota: o termo "avisar" = emitir áudio + logar em arquivo
 
 # Medições
@@ -22,36 +23,35 @@ A cada 5s o LBR deve indicar se houve perda ou ganho de velocidade com relação
 
 Se o botão ORÇA for pressionado e o rumo não for constante pelas últimas 2 medidas, LBR deve avisar "Manter rumo e tentar novamente".
 
-Se o botão ORÇA for pressionado pela primeira vez e o rumo for constante pelas últimas 2 medidas, LBR deve armazenar o ângulo como o1 e avisar "Orça 1 definida como XXX" (XXX em ponto cardinal)
+Se o botão ORÇA for pressionado pela primeira vez e o rumo for constante pelas últimas 2 medidas, LBR deve armazenar o ângulo como o1 e avisar "Orça 1 definida como XXX" (XXX em ponto cardinal no audio e graus no log)
 
-Se o botão ORÇA for pressionado após o1 definido e o rumo for constante pelas últimas 2 medidas, LBR deve armazenar o ângulo como o2 e avisar "Orça 2 definida como XXX" (XXX em ponto cardinal)
+Se o botão ORÇA for pressionado após o1 definido e o rumo for constante pelas últimas 2 medidas, LBR deve armazenar o ângulo como o2 e avisar "Orça 2 definida como XXX" (XXX em ponto cardinal no audio e graus no log)
 
-Quando o1 e o2 estiverem definidos, LBR deve calcular vento como a bissetriz entre o1 e o1 e alertar "Vento calculado como XXX" (XXX em ponto cardinal)
+Quando o1 e o2 estiverem definidos, LBR deve calcular vento como a bissetriz entre o1 e o1 e alertar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
 
-Se o botão ORÇA for pressionado e o1 e o2 estiverem definidos, LBR deve resetar o1 e o2 e avisar "Reset das orças".
+Se o botão ORÇA for pressionado e o1 e o2 já estiverem definidos, LBR deve resetar o1 e o2 e avisar "Reset do vento estimado".
 
-Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, LBR deve deslocar a zona morta e o vento pela quantidade de graus que o rumo estiver adentro, e alertar "Vento calculado como XXX" (XXX em ponto cardinal)
+Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, LBR deve deslocar a zona morta e o vento pela quantidade de graus que o rumo estiver adentro, e alertar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
 
 # Calculo da linha de largada
 
-TO DO: adicionar>
-Cálculo da posição da linha de largada
+TO DO: adicionar> Cálculo da posição da linha de largada
 
 # Contagem regressiva para largada
 
+Se o botão CONTAGEM for pressionado pela primeira vez, LBR deve 
+
+Se o botão CONTAGEM for pressionado pela segunda vez, LBR deve 
+
 TO DO: adicionar>
-Indicação do lado vantajoso para largar
-Contagem regressiva para largada
-Aviso de acelerar/reduzir velocidade no minuto final
+- Indicação do lado vantajoso para largar
+- Contagem regressiva para largada
+- Aviso de acelerar/reduzir velocidade no minuto final
 
 # Comparação de desempenho
 
-TO DO: adicionar>
-Comparação de desempenho em diferentes configurações
+TO DO: adicionar> Comparação de desempenho em diferentes configurações
 
 # Finalização da regata
 
-TO DO: adicionar>
-Registro da trajetória em CSV (tempo, coord, rumo, vel)
-
-
+Se o botão CONTAGEM for pressionado pela terceira vez, LBR deve registrar toda a trajetória acumulada em arquivo CSV contendo: tempo, coordenadas, rumo, velocidade, e avisar "Regata finalizada".
