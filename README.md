@@ -1,5 +1,5 @@
 # largada_br
-Aplicativo embarcado para assistência em regatas a vela
+Aplicativo embarcado para assistência em regatas a vela  
 by jdavison
 
 # Funções:
