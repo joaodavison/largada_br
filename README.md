@@ -1,6 +1,8 @@
-# largada_br
+# regata_br :brazil:
 Aplicativo embarcado para assistência em regatas a vela  
 by jdavison
+
+<img src="largada.jpg" width="600"/>
 
 # Funções:
 * Monitoramento de rumo e velocidade do veleiro
@@ -9,5 +11,5 @@ by jdavison
 * Indicação do lado vantajoso para largar
 * Contagem regressiva para largada
 * Aviso de acelerar/reduzir velocidade no minuto final
-* Comparação de desempenho em diferentes configurações
+* Comparação de desempenho em diferentes ajustes do veleiro
 * Registro da trajetória em CSV (tempo, coord, rumo, vel)
