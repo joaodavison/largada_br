@@ -42,21 +42,22 @@ Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, 
 
 INFO: A linha virtual de largada é calculada a partir da marcação das duas boias, levando o veleiro até elas para definir as suas coordenadas.
 
-Se o botão BOIA for pressionado e x1/y1 estiverem zerados, RBR deve memorizar as coordenadas atuais (lat/long) como x1 e y1.
+Se o botão BOIA for pressionado e x1 e y1 estiverem zerados, RBR deve memorizar as coordenadas atuais (lat/long) como x1 e y1.
 
-Se o botão BOIA for pressionado e x1/y1 estiverem definidos, RBR deve memorizar as coordenadas atuais (lat/long) como x2 e y2.
+Se o botão BOIA for pressionado e x1 e y1 estiverem definidos, RBR deve memorizar as coordenadas atuais (lat/long) como x2 e y2.
 
-Se o botão BOIA for pressionado e x2/y2 estiverem definidos, RBR deve zerar os valores de x1, y1, x2 e y2.
+Se o botão BOIA for pressionado e x2 e y2 estiverem definidos, RBR deve zerar os valores de x1, y1, x2 e y2.
 
-Se x1, y1, x2 e y2 estiverem definidos, RBR deve calcular o ângulo angulo_montagem como: arctan((y1 - y2) / (x1 - x2)).
+Se x1, y1, x2 e y2 estiverem definidos, RBR deve calcular o angulo_montagem como: 
+arctan((y1 - y2) / (x1 - x2)).
 
 INFO: Idealmente o angulo_montagem das boias e o angulo_vento devem coincidir.
 
-Se o angulo_montagem for maior que angulo_vento + 5, RBR deve avisar "Vantagem pela boia 2".
+Se o angulo_montagem for maior que angulo_vento + 5 deg, RBR deve avisar "Vantagem pela boia 2".
 
-Se o angulo_montagem for menor que angulo_vento - 5, RBR deve avisar "Vantagem pela boia 1".
+Se o angulo_montagem for menor que angulo_vento - 5 deg, RBR deve avisar "Vantagem pela boia 1".
 
-Se o angulo_montagem estiver entre angulo_vento +- 5, RBR deve avisar "Boias equivalentes".
+Se o angulo_montagem estiver entre angulo_vento +/- 5 deg, RBR deve avisar "Boias equivalentes".
 
 # Contagem regressiva para largada
 
@@ -68,17 +69,18 @@ Se a contagem regressiva estiver em minutos redondos, RBR deve avisar "X minutos
 
 Se a contagem regressiva estiver menor igual a 10 segundos, RBR deve avisar "X" a cada segundo.
 
-Se a contagem regressiva estiver menor que 5:00, RBR deve calcular a projeção ortogonal do veleiro na linha de largada (x3, y3), com a fórmula:
+Se a contagem regressiva estiver menor que 5:00, RBR deve calcular a projeção ortogonal do veleiro na linha de largada (x3, y3), com a fórmula: 
+
 <img src="formula_largada.png"/>
 
 Se a contagem regressiva estiver menor que 5:00, RBR deve calcular a distância do veleiro até a linha como:  
-sqrt((x3 - x0)² + (y3 - y0)²) * sqrt(2), 
+distancia = sqrt((x3 - x0)² + (y3 - y0)²) * sqrt(2),  
+distancia_segura = distancia - 5m,  
 onde x0, y0 representam a posição atual do veleiro.
 
+Se a contagem regressiva estiver menor que 1:30 e a velocidade (GPS) for menor que a distância_segura / contagem - 0.5kt, RBR deve avisar "Acelerar".
 
-TO DO: adicionar> Aviso de acelerar/reduzir velocidade no minuto final considerando dist e velocidade
-
-
+Se a contagem regressiva estiver menor que 1:30 e a velocidade (GPS) for maior que a distância_segura / contagem + 0.5kt, RBR deve avisar "Reduzir".
 
 # Comparação de desempenho
 
