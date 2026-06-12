@@ -15,6 +15,9 @@
 Nota: o termo "avisar" = emitir áudio + logar em arquivo
 
 # Medições do GPS
+
+A cada 5s o RBR deve guardar a posição do veleiro (x0, y0) como as coordenadas de long e lat do GPS. TO DO: alguma conversão?
+
 A cada 5s o RBR deve calcular o rumo a partir das coordenadas: fórmula (considerando 10s de deslocamento)
 
 A cada 5s o RBR deve indicar se houve perda ou ganho de velocidade com relação a TBD
@@ -57,14 +60,24 @@ Se o angulo_montagem estiver entre angulo_vento +- 5, RBR deve avisar "Boias equ
 
 # Contagem regressiva para largada
 
-Se o botão CONTAGEM for pressionado pela primeira vez, RBR deve 
+Se o botão CONTAGEM for pressionado pela primeira vez, RBR deve avisar "Contagem de 5 minutos" e iniciar uma contagem regressiva em 5:00.
 
-Se o botão CONTAGEM for pressionado pela segunda vez, RBR deve 
+Se o botão CONTAGEM for pressionado pela segunda vez, RBR deve avisar "Contagem de 1 minutos" e iniciar uma contagem regressiva em 1:00.
 
-TO DO: adicionar>
-- Contagem regressiva para largada
-- Aviso de acelerar/reduzir velocidade no minuto final
+Se a contagem regressiva estiver em minutos redondos, RBR deve avisar "X minutos".
+
+Se a contagem regressiva estiver menor igual a 10 segundos, RBR deve avisar "X" a cada segundo.
+
+Se a contagem regressiva estiver menor que 5:00, RBR deve calcular a projeção ortogonal do veleiro na linha de largada (x3, y3), com a fórmula:
 <img src="formula_largada.png"/>
+
+Se a contagem regressiva estiver menor que 5:00, RBR deve calcular a distância do veleiro até a linha como:  
+sqrt((x3 - x0)² + (y3 - y0)²) * sqrt(2), 
+onde x0, y0 representam a posição atual do veleiro.
+
+
+TO DO: adicionar> Aviso de acelerar/reduzir velocidade no minuto final considerando dist e velocidade
+
 
 
 # Comparação de desempenho
