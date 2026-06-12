@@ -42,9 +42,9 @@ Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, 
 
 INFO: A linha virtual de largada é calculada a partir da marcação das duas boias, levando o veleiro até elas para definir as suas coordenadas.
 
-Se o botão BOIA for pressionado e x1 e y1 estiverem zerados, RBR deve memorizar as coordenadas atuais (lat/long) como x1 e y1.
+Se o botão BOIA for pressionado e x1 e y1 estiverem zerados, RBR deve memorizar a posição do veleiro como x1 e y1.
 
-Se o botão BOIA for pressionado e x1 e y1 estiverem definidos, RBR deve memorizar as coordenadas atuais (lat/long) como x2 e y2.
+Se o botão BOIA for pressionado e x1 e y1 estiverem definidos, RBR deve memorizar a posição do veleiro como x2 e y2.
 
 Se o botão BOIA for pressionado e x2 e y2 estiverem definidos, RBR deve zerar os valores de x1, y1, x2 e y2.
 
@@ -61,9 +61,9 @@ Se o angulo_montagem estiver entre angulo_vento +/- 5 deg, RBR deve avisar "Boia
 
 # Contagem regressiva para largada
 
-Se o botão CONTAGEM for pressionado pela primeira vez, RBR deve avisar "Contagem de 5 minutos" e iniciar uma contagem regressiva em 5:00.
+Se o botão CONTAGEM for pressionado pela primeira vez, RBR deve avisar "Contagem de 5 minutos" e iniciar uma contagem regressiva silenciosa em 5:00.
 
-Se o botão CONTAGEM for pressionado pela segunda vez, RBR deve avisar "Contagem de 1 minutos" e iniciar uma contagem regressiva em 1:00.
+Se o botão CONTAGEM for pressionado pela segunda vez, RBR deve avisar "Contagem de 1 minutos" e iniciar uma contagem regressiva silenciosa em 1:00.
 
 Se a contagem regressiva estiver em minutos redondos, RBR deve avisar "X minutos".
 
@@ -78,9 +78,9 @@ distancia = sqrt((x3 - x0)² + (y3 - y0)²) * sqrt(2),
 distancia_segura = distancia - 5m,  
 onde x0, y0 representam a posição atual do veleiro.
 
-Se a contagem regressiva estiver menor que 1:30 e a velocidade (GPS) for menor que a distância_segura / contagem - 0.5kt, RBR deve avisar "Acelerar".
+Se a contagem regressiva estiver entre 1:30 e 0:10 e a velocidade (GPS) for menor que a distância_segura / contagem - 0.5kt, RBR deve avisar "Acelerar".
 
-Se a contagem regressiva estiver menor que 1:30 e a velocidade (GPS) for maior que a distância_segura / contagem + 0.5kt, RBR deve avisar "Reduzir".
+Se a contagem regressiva estiver entre 1:30 e 0:10 e a velocidade (GPS) for maior que a distância_segura / contagem + 0.5kt, RBR deve avisar "Reduzir".
 
 # Comparação de desempenho
 
