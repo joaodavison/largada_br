@@ -29,17 +29,31 @@ Se o botão ORÇA for pressionado pela primeira vez e o rumo for constante pelas
 
 Se o botão ORÇA for pressionado após o1 definido e o rumo for constante pelas últimas 2 medidas, RBR deve armazenar o ângulo como o2 e avisar "Orça 2 definida como XXX" (XXX em ponto cardinal no audio e graus no log)
 
-Quando o1 e o2 estiverem definidos, RBR deve calcular vento como a bissetriz entre o1 e o1 e alertar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
+Quando o1 e o2 estiverem definidos, RBR deve calcular angulo_vento como a bissetriz entre o1 e o1 e avisar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
 
-Se o botão ORÇA for pressionado e o1 e o2 já estiverem definidos, RBR deve resetar o1 e o2 e avisar "Reset do vento estimado".
+Se o botão ORÇA for pressionado e o1 e o2 já estiverem definidos, RBR deve resetar o1, o2 e angulo_vento e avisar "Reset do vento estimado".
 
-Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, RBR deve deslocar a zona morta e o vento pela quantidade de graus que o rumo estiver adentro, e alertar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
+Se o rumo for constante por 4 medidas dentro da zona morta com velocidade >2kt, RBR deve deslocar a zona morta (o1 e o2) e o angulo_vento pela quantidade de graus que o rumo estiver adentro, e alertar "Vento calculado como XXX" (XXX em ponto cardinal no audio e graus no log)
 
 # Calculo da linha de largada
 
 INFO: A linha virtual de largada é calculada a partir da marcação das duas boias, levando o veleiro até elas para definir as suas coordenadas.
 
-TO DO: adicionar> Cálculo da posição da linha de largada
+Se o botão BOIA for pressionado e x1/y1 estiverem zerados, RBR deve memorizar as coordenadas atuais (lat/long) como x1 e y1.
+
+Se o botão BOIA for pressionado e x1/y1 estiverem definidos, RBR deve memorizar as coordenadas atuais (lat/long) como x2 e y2.
+
+Se o botão BOIA for pressionado e x2/y2 estiverem definidos, RBR deve zerar os valores de x1, y1, x2 e y2.
+
+Se x1, y1, x2 e y2 estiverem definidos, RBR deve calcular o ângulo angulo_montagem como: arctan((y1 - y2) / (x1 - x2)).
+
+INFO: Idealmente o angulo_montagem das boias e o angulo_vento devem coincidir.
+
+Se o angulo_montagem for maior que angulo_vento + 5, RBR deve avisar "Vantagem pela boia 2".
+
+Se o angulo_montagem for menor que angulo_vento - 5, RBR deve avisar "Vantagem pela boia 1".
+
+Se o angulo_montagem estiver entre angulo_vento +- 5, RBR deve avisar "Boias equivalentes".
 
 # Contagem regressiva para largada
 
@@ -48,9 +62,10 @@ Se o botão CONTAGEM for pressionado pela primeira vez, RBR deve
 Se o botão CONTAGEM for pressionado pela segunda vez, RBR deve 
 
 TO DO: adicionar>
-- Indicação do lado vantajoso para largar
 - Contagem regressiva para largada
 - Aviso de acelerar/reduzir velocidade no minuto final
+<img src="formula_largada.png"/>
+
 
 # Comparação de desempenho
 
